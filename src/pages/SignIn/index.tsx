@@ -22,7 +22,8 @@ interface SignInFormData {
 const SignIn: React.FC = () => {
     const formRef = useRef<FormHandles>(null);
 
-    const { signIn } = useContext(AuthContext);
+    const { user, signIn } = useContext(AuthContext);
+    console.log(user)
 
     const handleSubmit = useCallback(async (data: SignInFormData) => {
         try {
@@ -39,7 +40,7 @@ const SignIn: React.FC = () => {
                 abortEarly: false
             });
 
-            await signIn({
+            signIn({
                 email: data.email,
                 password: data.password
             });
@@ -66,7 +67,7 @@ const SignIn: React.FC = () => {
                     <a href="forgot">Esqueci minha senha</a>
                 </Form>
 
-                <a href="">
+                <a href="singin">
                     <FiLogIn />
                 Criar conta
             </a>
